@@ -1,0 +1,23 @@
+{
+  "name": "shop_project",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build": "rollup -c --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "on-change": "^6.0.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "eslint": "^10.9.1",
+    "globals": "^17.12.0",
+    "rollup": "^4.63.1",
+    "rollup-plugin-import-css": "^4.2.1"
+  }
+}
