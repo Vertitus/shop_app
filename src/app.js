@@ -1,10 +1,12 @@
 import { MainView } from "./view/main.js";
+import { ShopBucketView } from "./view/shop-bucket/shopBucket.js";
 
 
 class App {
 
     routes = [
-        {path: "", view: MainView}
+        {path: "", view: MainView},
+        {path: "#shop-bucket", view: ShopBucketView}
     ]
 
 
@@ -14,7 +16,7 @@ class App {
     }
 
     appState = {
-        shopBucked: [],
+        shopBucket: [],
     }
 
     route() {

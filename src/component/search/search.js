@@ -14,14 +14,17 @@ export class Search extends DivInint {
     }
 
     render() {
+        
         this.el.classList.add('search');
         this.el.innerHTML = `
-            <input 
-                type="text"
-                placeholder="search"    
-                class ="input"
-            />
-            <button><img src ="./static/search.svg" /></button>
+            <div class = "search__wrapper">
+                <input 
+                    type="text"
+                    placeholder="search"    
+                    class ="input"
+                />
+                <button><img src ="./static/search.svg" /></button>
+            </div>
         `
         this.el.querySelector('button').addEventListener('click', () => this.search())
         this.el.querySelector('.input').addEventListener('keydown', (event) => {

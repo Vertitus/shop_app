@@ -4,23 +4,24 @@ import "./cardList.css"
 
 export class CardList extends DivInint {
 
-    constructor(state) {
+    constructor(state, appState) {
         super();
         this.state = state;
+        this.appState = appState;
     }
 
-    search() {
-        const value = this.el.querySelector('.input').value;
-        this.state.searchQuery = value;
-    }
 
     render() {
+        if (this.state.loading) {
+            this.el.innerHTML = `<div class = card_list__loader></div>`;
+            return this.el;
+        }
         this.el.classList.add('card_list');
         const cardList = document.createElement('div');
         cardList.classList.add('card_grid')
         this.el.append(cardList)
         for (const product of this.state.list) {
-            cardList.append(new Card(product).render())
+            cardList.append(new Card(product, this.appState).render())
         }
         return this.el;
     }

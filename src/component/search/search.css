@@ -1,7 +1,37 @@
 .search {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    float: 1;
+    justify-content: center;
     margin-bottom: 15px;
+}
+
+.search__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex: 1;
+    max-width: 800px;
+    gap: 15px;
+}
+
+.search input {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(208, 208, 208);
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 200;
+    flex: 1;
+}
+
+.search button {
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    background-color: rgb(208, 208, 208);
 }

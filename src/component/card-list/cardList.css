@@ -1,5 +1,32 @@
+.card_list__loader {
+    display: block;
+    margin: 0 auto;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: var(--black); /* Цвет активного сектора */
+    border-radius: 50%;
+    animation: rotation 1s linear infinite; /* Бесконечное вращение */
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.card_list {
+    display: flex;
+    justify-content: center;
+}
+
+
 .card_grid {
+    max-width: 800px;
     display: grid;
-    grid-template-columns:  repeat(4, 1fr);
+    grid-template-columns:  repeat(3, 1fr);
     gap: 15px;
 }

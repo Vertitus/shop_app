@@ -1,25 +1,45 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
 .header__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex: 1;
+    max-width: 800px;  
+}
+
+.header__menu {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    min-width: 800px;
-    flex: 1;
-    margin-bottom: 15px;
+    justify-content: center;
+    gap: 30px;
+}
+
+.header__search {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;    
+    color: black;
+    text-decoration: none;
+}
+
+.header__search:visited {
+    color: black;
 }
 
 .shop_bucket {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     gap: 5px;
+    color: black;
+    text-decoration: none;
 }
 
-.search {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;    
-}
+

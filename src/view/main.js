@@ -17,10 +17,18 @@ export class MainView extends AbstractView {
     constructor(appState) {
         super();
         this.appState = appState;
+        console.log('MainView получил appState:', this.appState);
         this.state = onChange(this.state, this.stateHook.bind(this));
+        this.appState = onChange(this.appState, this.appStateHook.bind(this));
         this.setTitle('Главная страница');;
     }
 
+
+    appStateHook(path) {
+        if(path === 'shopBucket') {
+            this.render();
+        }
+    }
 
     async stateHook(path) {
         if (path === 'searchQuery') {
@@ -52,9 +60,9 @@ export class MainView extends AbstractView {
 
     render() {
         const main = document.createElement('div');
-        main.append(new Search(this.state).render());
-        main.append(new CardList(this.state).render())
         this.app.innerHTML = '';
+        main.append(new Search(this.state).render());
+        main.append(new CardList(this.state, this.appState).render())
         this.app.append(main)
         this.renderHeader();
     }
