@@ -29,7 +29,7 @@ export class Card extends DivInint {
                 <div class ="card__title">${this.card.title}</div>
                 <div class ="card__brand">${this.card.brand}</div>
                 <div class ="card__description">${this.card.description}</div>
-                <div class ="card__price">${this.card.price}</div>
+                <div class ="card__price">$${this.card.price}</div>
 
                 <div class ="card__event">
                     <button class ="card__favorite">

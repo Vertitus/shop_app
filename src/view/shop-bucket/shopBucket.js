@@ -26,7 +26,7 @@ export class ShopBucketView extends AbstractView {
         const main = document.createElement('div');
         this.app.innerHTML = '';
         main.innerHTML = `
-            <h1>Корзина</h1>
+            <h1>Cart</h1>
         `
         main.append(new CardList({list: this.appState.shopBucket}, this.appState).render())
         

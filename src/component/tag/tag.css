@@ -1,0 +1,16 @@
+.tag__button {
+    background: none;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.tag__button_active {
+    background: black;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;    
+}

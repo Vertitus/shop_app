@@ -20,7 +20,7 @@ export class Search extends DivInint {
             <div class = "search__wrapper">
                 <input 
                     type="text"
-                    placeholder="search"    
+                    placeholder=" search..."    
                     class ="input"
                 />
                 <button><img src ="./static/search.svg" /></button>

@@ -16,11 +16,11 @@ export class Header extends DivInint {
                 <div class ="header__menu">
                     <a href ="#" class="header__search">
                         <img src ="./static/search.svg" alt = "search">
-                        Поиск
+                        Search
                     </a>
                     <a href ="#shop-bucket" class = "shop_bucket">
                         <img src ="./static/favorites.svg" alt = "search">
-                        Корзина
+                        Cart 
                         <div class = "counter">${this.appState.shopBucket.length}</div>
                     </a>
                 </div>
