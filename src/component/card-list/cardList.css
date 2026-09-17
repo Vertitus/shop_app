@@ -21,6 +21,7 @@
 .card_list {
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 

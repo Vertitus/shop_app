@@ -1,0 +1,23 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button__hidden {
+    visibility: hidden
+}
+
+.nextActiveClass {
+    visibility: hidden;
+}
+
+.pagination__button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(208, 208, 208);
+    color: rgb(99, 99, 99);
+    cursor: pointer;
+}

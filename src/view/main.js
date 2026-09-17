@@ -4,16 +4,20 @@ import { Header } from "../component/header.js";
 import { Search } from "../component/search/search.js";
 import onChange from "on-change";
 import { TagList } from "../component/tagList/tagList.js";
+import { Pagination } from "../component/pagination/pagination.js";
 
 export class MainView extends AbstractView {
     
 
     state = {
         list: [],
+        total: 0,
         loading: false,
         searchQuery: undefined,
         currentTag: undefined,
-        offset: 0,
+        limit: 9,
+        skip: 0,
+        page: 0,
         category: []
     }
 
@@ -54,35 +58,54 @@ export class MainView extends AbstractView {
     async stateHook(path) {
         if (path === 'searchQuery') {
             this.state.loading = true;
-            const data = await this.loadList(this.state.searchQuery);
+            const data = await this.loadList(this.state.searchQuery, this.state.limit, this.state.skip);
             this.state.list = data.products;
-            this.state.loading = false;            
+            this.state.total = data.total;
+            this.state.loading = false;    
         } 
 
         if (path === 'currentTag') {
             this.state.loading = true;
             let data;
             if (this.state.currentTag) {
-                data = await this.loadListByTag(this.state.currentTag);
+                data = await this.loadListByTag(this.state.currentTag, this.state.limit, this.state.skip);
             } else {
                 data = await this.loadList(); 
             }
             if (data && data.products) {
                 this.state.list = data.products;
             }
+            this.state.total = data.total;
             this.state.loading = false;
         }
 
-        if (path === 'list' || path === 'loading' || path === 'category') {
+        if(path === 'page') {
+            this.state.skip = this.state.page * 9; 
+        }
+
+        if (path === 'skip') {
+            this.state.loading = true;
+            const data = await this.loadList(this.state.searchQuery, this.state.limit, this.state.skip);
+            this.state.list = data.products;
+            this.state.loading = false;
+        }
+
+        if (path === 'currentTag' || path === 'searchQuery') {
+           this.state.page = 0;
+           this.state.skip = 0;
+           this.render();
+        }
+
+        if (path === 'list' || path === 'loading' || path === 'category' || path === 'page' || path === 'skip') {
             this.render();
         }
     }
 
 
-    async loadListByTag(category) {
+    async loadListByTag(category, limit, skip) {
         if (!category) return null;
         try {
-            const url = `https://dummyjson.com/products/category/${encodeURIComponent(category)}`;
+            const url = `https://dummyjson.com/products/category/${encodeURIComponent(category)}?limit=${limit}&skip=${skip}`;
             const res = await fetch(url);
 
             if (!res.ok) {
@@ -96,11 +119,11 @@ export class MainView extends AbstractView {
         }
     }
 
-    async loadList(q) {
+    async loadList(q, limit, skip) {
         try {
             const url = q 
-                ? `https://dummyjson.com/products/search?q=${encodeURIComponent(q)}`
-                : `https://dummyjson.com/products`;
+                ? `https://dummyjson.com/products/search?q=${encodeURIComponent(q)}?limit=${limit}&skip=${skip}`
+                : `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
             const res = await fetch(url);
             return res.json();
         } catch (error) {
@@ -115,6 +138,7 @@ export class MainView extends AbstractView {
         main.append(new Search(this.state).render());
         main.append(new TagList(this.state, this.appState).render())
         main.append(new CardList(this.state, this.appState).render())
+        main.append(new Pagination(this.state, this.appState).render())
         this.app.append(main)
         this.renderHeader();
     }
