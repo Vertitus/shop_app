@@ -24,23 +24,29 @@ export class Card extends DivInint {
 
         this.el.classList.add('card');
         this.el.innerHTML = `
-            <img src="${this.card.images[0]}" class = "card__image"/>
-            <div class ="card__full_description">
-                <div class ="card__title">${this.card.title}</div>
-                <div class ="card__brand">${this.card.brand}</div>
-                <div class ="card__description">${this.card.description}</div>
-                <div class ="card__price">$${this.card.price}</div>
+            <a href = "#${this.appState.currentID}">
+                <button class = "ID_change">
+                    <img src="${this.card.images[0]}" class = "card__image"/>
+                    <div class ="card__full_description">
+                        <div class ="card__title">${this.card.title}</div>
+                        <div class ="card__brand">${this.card.brand}</div>
+                        <div class ="card__description">${this.card.description}</div>
+                        <div class ="card__price">$${this.card.price}</div>
 
-                <div class ="card__event">
-                    <button class ="card__favorite">
-                        <img src="./static/favorite-white.svg">
-                    </button>
-                    <button class ="card__buy">
-                        Buy now
-                    </button>
-                </div>
-            </div>
+                        <div class ="card__event">
+                            <button class ="card__favorite">
+                                <img src="./static/favorite-white.svg">
+                            </button>
+                            <button class ="card__buy">
+                                Buy now
+                            </button>
+                        </div>
+                    </div>
+                </button>
+            </a>
         `
+
+        this.el.querySelector('.ID_change').addEventListener('click', this.appState.currentID = this.card.id)
 
         if (existInFavorites) {
             this.el.querySelector('.card__favorite').addEventListener('click', this.#deleteFromShopBucket.bind(this))

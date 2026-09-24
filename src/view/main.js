@@ -28,7 +28,7 @@ export class MainView extends AbstractView {
         this.state = onChange(this.state, this.stateHook.bind(this));
         this.appState = onChange(this.appState, this.appStateHook.bind(this));
         this.setTitle('Главная страница');
-
+        
         this.loadTags();
     }
 
@@ -61,6 +61,7 @@ export class MainView extends AbstractView {
             const data = await this.loadList(this.state.searchQuery, this.state.limit, this.state.skip);
             this.state.list = data.products;
             this.state.total = data.total;
+            console.log(this.state.list)
             this.state.loading = false;    
         } 
 
@@ -148,6 +149,7 @@ export class MainView extends AbstractView {
         this.app.prepend(header);
     }
 
+    
 
 }
 
